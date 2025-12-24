@@ -1,0 +1,27 @@
+# --- AWS CDK / CloudFormation ---
+**/cdk.out/
+.cdk.staging/
+cdk.context.json
+
+# --- Python ---
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.installed.cfg
+.eggs/
+
+# --- Environment Variables (Security!) ---
+# 認証情報や秘密の鍵を含めないようにするため
+.env
+.env.local
+.env.*
+secrets.yaml
+
+# --- OS / IDE ---
+.DS_Store
+.vscode/
+.idea/

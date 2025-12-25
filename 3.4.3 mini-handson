@@ -1,0 +1,48 @@
+Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 6.6.87.2-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Dec 25 09:50:19 JST 2025
+
+  System load:  0.0                 Processes:             51
+  Usage of /:   0.3% of 1006.85GB   Users logged in:       2
+  Memory usage: 10%                 IPv4 address for eth0: 172.27.155.164
+  Swap usage:   0%
+
+ * Ubuntu 20.04 LTS Focal Fossa has reached its end of standard support
+   on 31 May 2025.
+
+   For more details see:
+   https://ubuntu.com/20-04
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+58 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+70 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+
+
+This message is shown once a day. To disable it please create the
+/home/kotamori2580/.hushlogin file.
+kotamori2580@TABLET-1K0FL1UH:~$ bucketName="mubucket-$(openssl rand -hex 12)"
+kotamori2580@TABLET-1K0FL1UH:~$ echo $bucketName
+mubucket-6a887cad11c39f2426241fb8
+kotamori2580@TABLET-1K0FL1UH:~$ aws s3 mb "s3://${bucketName}"
+make_bucket: mubucket-6a887cad11c39f2426241fb8
+kotamori2580@TABLET-1K0FL1UH:~$ aws s3 ls
+2025-12-24 10:42:00 cdk-hnb659fds-assets-777642510551-ap-northeast-1
+2025-12-25 09:52:01 mubucket-6a887cad11c39f2426241fb8
+kotamori2580@TABLET-1K0FL1UH:~$ echo "Hello world" > hello_world.txt
+kotamori2580@TABLET-1K0FL1UH:~$ aws s3 cp hello_world.txt "s3://${bucketName}/hello_world.txt"
+upload: ./hello_world.txt to s3://mubucket-6a887cad11c39f2426241fb8/hello_world.txt
+kotamori2580@TABLET-1K0FL1UH:~$ aws s3 ls "s3://${bucketName}" --human-readable
+2025-12-25 09:53:16   12 Bytes hello_world.txt
+kotamori2580@TABLET-1K0FL1UH:~$ aws s3 rb "s3://${bucketName}" --force
+delete: s3://mubucket-6a887cad11c39f2426241fb8/hello_world.txt
+remove_bucket: mubucket-6a887cad11c39f2426241fb8
